@@ -3,6 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AppService.Acmebot.Options;
 
+public class ValidationWebAppOptions
+{
+    [Required]
+    public string ResourceGroupName { get; set; }
+
+    [Required]
+    public string WebAppName { get; set; }
+}
+
 public class AcmebotOptions
 {
     [Required]
@@ -26,4 +35,11 @@ public class AcmebotOptions
     public int RenewBeforeExpiry { get; set; } = 30;
 
     public ExternalAccountBindingOptions ExternalAccountBinding { get; set; }
+
+    [Required]
+    [Url]
+    public string KeyVaultUri { get; set; }
+
+    [Required]
+    public ValidationWebAppOptions ValidationWebApp { get; set; }
 }
